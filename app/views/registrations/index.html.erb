@@ -1,0 +1,32 @@
+<h1 class="display-4 p-2">Registrations</h1>
+
+<a href="/registrations/new" class="btn btn-outline-primary m-2">
+  <i class="fa fa-plus-square"></i> Add Registration
+</a>
+
+<table class="table table-striped">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Id</th>
+      <th>Class</th>
+      <th>Teacher</th>
+      <th>Semester</th>
+      <th>Year</th>
+      <th>Capacity</th>
+      <th>Open?</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% @registrations.each do |r| %>
+      <tr>
+        <td><%= r.id %></td>
+        <td><%= r.course.name %></td>
+        <td><%= r.teacher.email %></td>
+        <td><%= r.semester %></td>
+        <td><%= r.year %></td>
+        <td><%= r.capacity %></td>
+        <td><%= link_to r.is_open.to_s, toggle_open_registration_path(r), method: :put %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,31 @@
+<h1 class="display-4 p-2">Courses</h1>
+
+<a href="/klasses/new" class="btn btn-outline-primary m-2">
+  <i class="fa fa-plus-square"></i> Add Course
+</a>
+
+<table class="table table-striped">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Subject</th>
+      <th>Level</th>
+      <th>Credits</th>
+      <th>Syllabus?</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% @courses.each do |k| %>
+      <tr>
+        <td><%= k.id %></td>
+        <td><%= k.name %></td>
+        <td><%= k.subject %></td>
+        <td><%= k.level %></td>
+        <td><%= k.credits %></td>
+        <td><%= syllabus(k) %></td>
+        </td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>

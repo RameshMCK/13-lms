@@ -1,0 +1,51 @@
+<h1 class="display-4 p-2"><%= @course.name %> Syllabus</h1>
+
+<div class="row">
+  <div class="col-8">
+    <div>
+      <% @course.sections.order(position: 'asc').each do |s| %>
+        <div style="background-color: #cccccc;" class="border border-danger rounded p-1 m-3">
+          <%= link_to '🔺', goup_course_path(@course, s), method: :put %>
+          <%= link_to '🔻', godown_course_path(@course, s), method: :put %>
+
+          <h1><%= s.title %></h1>
+          <p><%= s.content %></p>
+          <div>
+            <%= link(s.link) %>
+          </div>
+          <div>
+            <%= file(s.azure) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-4">
+    <h3>New Section</h3>
+    <%= form_with(url: sections_course_path(@course), model: @section, local: true) do |form| %>
+      <div class="form-group">
+        <%= form.label :title %>
+        <%= form.text_field :title, id: :title, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :content %>
+        <%= form.text_area :content, id: :content, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :link %>
+        <%= form.text_field :link, id: :link, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :file %>
+        <%= form.file_field :file, id: :file, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.submit class: 'btn btn-outline-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

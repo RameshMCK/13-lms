@@ -1,0 +1,36 @@
+
+<h1>Logs</h1>
+
+
+<nav aria-label="Page navigation example">
+  
+  <ul class="pagination">
+     <% (0..@count).to_a.each do |m| %>
+    <li class="page-item"><a class="page-link" href="/users/logs?page=3"> <%= m %> </a></li>
+      <% end %>
+  </ul>
+</nav>
+<table class="table table-striped">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Controller</th>
+      <th>Action</th>
+      <th>Params</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @logs.each do |m| %>
+      <tr>
+        <td><%= m['email'] %></td>
+        <td><%= m['role'] %></td>   
+        <td><%= m['controller'] %></td>   
+        <td><%= m['action'] %></td>   
+        <td style="overflow:scroll; word-wrap: break-word;"> <%= m['params'] %></td>   
+        <td><%= m['datatime'] %></td>   
+      </tr>
+    <% end %>
+  </tbody>
+</table>

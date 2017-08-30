@@ -1,0 +1,120 @@
+this is my syllabus
+
+<!--
+# == Schema Information
+#
+# Table name: syllabuses
+#
+#  id         :integer          not null, primary key
+#  title      :string           not null
+#  content    :string
+#  file       :string
+#  url        :string
+#  course_id  :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+-->
+<div class="container-fluid">
+
+<div class="row">
+    <div class="col-8">
+        <div class="row" >
+          <table class="table table-striped">
+          <thead class="thead-inverse">
+            <tr>
+              <div class="col">
+                <div class="row">
+                  <i class="fa fa-chevron-circle-up fa-3"></i>
+                </div>
+                <div class="row">
+                  <i class="fa fa-chevron-circle-down fa-3"></i>
+                </div>
+              </div>
+            <th>Files</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @syllabuses.each do |r| %>
+          <tr>
+            <td><%= link_to "Click Open the tile " + r.title, r.file %>
+          </tr>
+          <% end %>
+          </tbody>
+          </table>
+        </div>
+        
+        <div>
+          <table class="table table-striped">
+          <thead class="thead-inverse">
+            <tr>
+              <div class="col">
+                <div class="row">
+                  <i class="fa fa-chevron-circle-up fa-3"></i>
+                </div>
+                <div class="row">
+                  <i class="fa fa-chevron-circle-down fa-3"></i>
+                </div>
+              </div>
+            <th>Images</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @syllabuses.each do |r| %>
+          <tr>
+            <td><%= link_to "Click Open the tile " + r.title, r.file %>
+          </tr>
+          <% end %>
+          </tbody>
+          </table>
+
+        </div>
+        
+        <div>
+              <div class="col">
+                <div class="row">
+                  <i class="fa fa-chevron-circle-up fa-3"></i>
+                </div>
+                <div class="row">
+                  <i class="fa fa-chevron-circle-down fa-3"></i>
+                </div>
+              </div>
+          <% @syllabuses.each do |r| %>
+          <div>
+            <%= r.url.html_safe %>
+          </div>
+          <% end %>
+        </div>
+    </div>
+  <div class="col-3">
+     <%= form_with(url: course_syllabuses_path(@course), model: @syllabus, local: true) do |form| %>
+      <%= render 'errors', object: @syllabus %>
+
+      <div class="form-group">
+        <%= form.label :title %>
+        <%= form.text_field :title, id: :syllabus_title, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :content %>
+        <%= form.text_area :content, id: :syllabus_content, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+          <%= form.file_field :file %>
+      </div>
+      <div class="form-group">
+        <%= form.label :link %>
+        <%= form.text_field :url, id: :syllabus_url, class: 'form-control' %>
+      </div>
+
+        
+
+      <div class="form-group">
+        <%= form.submit class: 'btn btn-outline-primary' %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-8"></div>
+</div>
+</div>
