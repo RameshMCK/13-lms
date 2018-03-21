@@ -5,8 +5,8 @@
 <nav aria-label="Page navigation example">
   
   <ul class="pagination">
-     <% (0..@count).to_a.each do |m| %>
-    <li class="page-item"><a class="page-link" href="/users/logs?page=3"> <%= m %> </a></li>
+     <% (1..@count).to_a.each do |m| %>
+    <li class="page-item"><a class="page-link" href="/users/logs?page=#{<%= m %>}"> <%= m %> </a></li>
       <% end %>
   </ul>
 </nav>

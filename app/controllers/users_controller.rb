@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     pagesize=5
     @count = (logs['total'].to_f / pagesize.to_f).ceil
     
-    @logs = logs['data']
+    #@logs = logs['data']
     
     
    # @logs = JSON.parse(logs)
